@@ -1,0 +1,8 @@
+function confirmDelete(frm){if(confirm("Are you sure?")){frm.del.value=1;frm.submit()}}(function($){$.fn.extend({center:function(){return this.each(function(){var top=($(window).height()-$(this).outerHeight())/2;var left=($(window).width()-$(this).outerWidth())/2;$(this).css({position:'absolute',margin:0,top:(top>0?top:0)+'px',left:(left>0?left:0)+'px'})})}})})(jQuery);function validateBFTProUser(frm,requireName){requireName=requireName||!1;if(requireName&&frm.bftpro_name.value==""){alert(bftpro_i18n.name_required);frm.bftpro_name.focus();return!1}
+if(frm.email.value==""||frm.email.value.indexOf("@")<1||frm.email.value.indexOf(".")<1){alert(bftpro_i18n.email_required);frm.email.focus();return!1}
+var req_cnt=frm.elements["required_fields[]"].length;if(req_cnt>1){for(i=0;i<req_cnt;i++){var fieldName=frm.elements["required_fields[]"][i].value;if(fieldName!=''){var isFilled=!1;if(frm.elements[fieldName].type=='radio')continue;if(frm.elements[fieldName].type=='checkbox'&&!frm.elements[fieldName].checked){alert(bftpro_i18n.required_field);frm.elements[fieldName].focus();return!1}
+if(frm.elements[fieldName].value==""){alert(bftpro_i18n.required_field);frm.elements[fieldName].focus();return!1}}}}
+if(frm.bftpro_text_captcha_answer&&frm.bftpro_text_captcha_answer.value==''){alert(bftpro_i18n.missed_text_captcha);frm.bftpro_text_captcha_answer.focus();return!1}
+return!0}
+function stripslashes(str){str=str.replace(/\\'/g,'\'');str=str.replace(/\\"/g,'"');str=str.replace(/\\0/g,'\0');str=str.replace(/\\\\/g,'\\');return str}
+BFTPRO={}
